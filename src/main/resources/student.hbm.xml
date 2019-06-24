@@ -4,19 +4,17 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name = "hiber.test1.hiber.test1.Employee" table = "EMPLOYEE">
+    <class name = "hiber.test1.hiber.Student" table = "STUDENT">
 
         <meta attribute = "class-description">
             This class contains the employee detail.
         </meta>
 
-        <id name = "id" type = "int" column = "id">
+        <id name = "sid" type = "int" column = "sid">
             <generator class="native"/>
         </id>
 
-        <property name = "firstName" column = "first_name" type = "string"/>
-        <property name = "lastName" column = "last_name" type = "string"/>
-        <property name = "salary" column = "salary" type = "int"/>
+        <property name = "name" column = "name" type = "string"/>
 
     </class>
 </hibernate-mapping>
