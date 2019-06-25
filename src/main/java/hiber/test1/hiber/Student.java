@@ -40,6 +40,17 @@ public class Student {
         this.year = year;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "sid=" + sid +
+                ", department=" + department +
+                ", name='" + name + '\'' +
+                ", year=" + year +
+                ", courseSet=" + courseSet +
+                '}';
+    }
+
     public String getName() {
         return name;
     }

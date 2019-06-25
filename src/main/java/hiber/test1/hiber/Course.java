@@ -14,6 +14,14 @@ public class Course {
         this.studentSet = studentSet;
     }
 
+    @Override
+    public String toString() {
+        return "Course{" +
+                "cid=" + cid +
+                ", name='" + name + '\'' +
+                ", studentSet="  +
+                '}';
+    }
 
     public Set<Student> getStudentSet() {
         return studentSet;

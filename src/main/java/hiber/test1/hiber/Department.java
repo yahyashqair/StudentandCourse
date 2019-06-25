@@ -12,6 +12,15 @@ public class Department {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ","+
+                '}';
+    }
+
     public void setId(int id) {
         this.id = id;
     }

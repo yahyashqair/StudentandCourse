@@ -33,12 +33,12 @@ public class Crud {
         s1.setName("Yahya Shqair");
         s1.setYear(4);
         s1.setDepartment(department);
-        s1.setSid(0);
+        s1.setSid((int)(Math.random()*500));
         Student s2 = new Student();
         s2.setName("ahmaaad ");
         s2.setYear(1);
         s2.setDepartment(department);
-        s2.setSid(1);
+        s2.setSid((int)(Math.random()*500));
         //
         // Courses
         Course c1 = new Course();
@@ -62,13 +62,13 @@ public class Crud {
         c2.setStudentSet(studentSet);
         // end Courses
         department.setStudentSet(studentSet);
-        session.update(s1);
-        session.update(department);
-        session.update(s2);
-        session.update(c1);
-        session.update(c2);
+        System.out.println(s1);
+        session.save(s1);
+        session.save(department);
+        session.save(s2);
+        session.save(c1);
+        session.save(c2);
         tr.commit();
-        session.close();
         System.out.println(" Finished ");
     }
 
