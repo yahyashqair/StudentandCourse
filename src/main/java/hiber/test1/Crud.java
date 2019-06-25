@@ -3,17 +3,48 @@ package hiber.test1;
 import hiber.test1.hiber.Course;
 import hiber.test1.hiber.Department;
 import hiber.test1.hiber.Student;
+import hiber.test1.hiber.test1.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import java.util.List;
+import java.util.Iterator;
+
 public class Crud {
+//
+//    static void readData(){
+//
+//        SessionFactory factory;
+//        try {
+//            factory = new Configuration().configure().buildSessionFactory();
+//        } catch (Throwable ex) {
+//            System.out.println("Failed to create sessionFactory object." + ex);
+//            throw new ExceptionInInitializerError(ex);
+//        }
+//
+//        Session session = factory.openSession();
+//        Transaction tr = session.beginTransaction();
+//        List<Student> students = session.createSQLQuery("select * from STUDENT").getResultList();
+//        for (Iterator iterator = students.iterator(); iterator.hasNext();){
+//           Student student= (Student) iterator.next();
+//            System.out.println(student.toString());
+//        }
+//        tr.commit();
+//
+//
+//
+//    }
+//
 
     public static void main(String[] args) {
+      //  readData();
+        // add student
         SessionFactory factory;
         try {
             factory = new Configuration().configure().buildSessionFactory();
@@ -24,7 +55,7 @@ public class Crud {
 
         Session session = factory.openSession();
         Transaction tr = session.beginTransaction();
-        // add student
+
         Student s1 = new Student();
         Department department = new Department();
 
@@ -68,7 +99,6 @@ public class Crud {
         session.saveOrUpdate(s2);
         session.saveOrUpdate(c1);
         session.saveOrUpdate(c2);
-        tr.commit();
         System.out.println(" Finished ");
     }
 
