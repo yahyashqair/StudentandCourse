@@ -8,7 +8,7 @@
     </meta>
 
     <id name = "sid" type = "int" column = "sid" >
-        <generator class="identity"/>
+<!--        <generator class=""/>-->
     </id>
 
 
