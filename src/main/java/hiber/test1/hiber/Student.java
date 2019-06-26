@@ -1,12 +1,20 @@
 package hiber.test1.hiber;
 
+import lombok.Data;
+
 import java.util.Set;
 import java.util.HashSet;
 
-public class Student {
+public  class Student {
 
 
     private Integer sid;
+
+    private Department department;
+    private String name;
+    private int year;
+    private Set<Course> courseSet = new HashSet<Course>();
+
 
     public Department getDepartment() {
         return department;
@@ -15,12 +23,6 @@ public class Student {
     public void setDepartment(Department department) {
         this.department = department;
     }
-
-    private Department department;
-    private String name;
-    private int year;
-    private Set<Course> courseSet = new HashSet<Course>();
-    ;
 
     public Set<Course> getCourseSet() {
         return courseSet;
@@ -76,6 +78,6 @@ public class Student {
     public void setSid(Integer sid) {
         this.sid = sid;
     }
-
+//
 
 }
