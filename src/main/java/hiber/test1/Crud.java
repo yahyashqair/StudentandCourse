@@ -20,8 +20,8 @@ import org.hibernate.Criteria;
 
 public class Crud {
 
+    static Session makesesstions(){
 
-    static void readData() {
         SessionFactory factory;
         try {
             factory = new Configuration().configure().buildSessionFactory();
@@ -29,8 +29,14 @@ public class Crud {
             System.out.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);
         }
-
         Session session = factory.openSession();
+        return session;
+    }
+
+    // For Testing ..
+    static void readData() {
+
+        Session session = makesesstions();
         Transaction tr = session.beginTransaction();
 
         SQLQuery query = session.createSQLQuery("select * from STUDENT");
@@ -45,17 +51,10 @@ public class Crud {
 
     }
 
+    // For Testing ..
     static void insertData() {
 
-        SessionFactory factory;
-        try {
-            factory = new Configuration().configure().buildSessionFactory();
-        } catch (Throwable ex) {
-            System.out.println("Failed to create sessionFactory object." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
-        Session session = factory.openSession();
-        Transaction tr = session.beginTransaction();
+
         Student s1 = new Student();
         Department department = new Department();
 
@@ -103,6 +102,44 @@ public class Crud {
         session.close();
         System.out.println(" Finished ");
 
+    }
+
+    /*
+    *   Create Strudent
+    *  */
+    static Student CreatStudent(String Name,int did ){
+        Student student = new Student();
+        Session session = makesesstions();
+        Transaction tr = session.beginTransaction();
+        Department department = session.get(Department.class,did);
+        student.setDepartment(department);
+        student.setName(Name);
+        session.save(student);
+        tr.commit();
+        return student;
+    }
+
+
+    /*
+     *   Remove Student
+     *  */
+    static void RemoveStudent(int id ){
+        Session session = makesesstions();
+        Transaction tr = session.beginTransaction();
+        Student student=session.find(Student.class,id);
+        session.remove(student);
+        tr.commit();
+    }
+    /*
+     *   update Student
+     *  */
+    static void UpdateStudent(int id ,String name){
+        Session session = makesesstions();
+        Transaction tr = session.beginTransaction();
+        Student student=session.find(Student.class,id);
+        student.setName(name);
+        session.update(student);
+        tr.commit();
     }
 
     public static void main(String[] args) {
