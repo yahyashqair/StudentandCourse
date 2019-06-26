@@ -9,19 +9,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import java.util.List;
-import java.util.Iterator;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Criteria;
+import org.springframework.context.annotation.ComponentScan;
 
 public class Crud {
 
 
-    static void readData() {
+    public static List<Student> readData() {
         SessionFactory factory;
         try {
             factory = new Configuration().configure().buildSessionFactory();
@@ -32,16 +31,16 @@ public class Crud {
 
         Session session = factory.openSession();
         Transaction tr = session.beginTransaction();
-
+        Student student=session.get(Student.class,1);
         SQLQuery query = session.createSQLQuery("select * from STUDENT");
         query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
 
         List<Student> students = query.list();
 
-        System.out.println(students);
+
 
         tr.commit();
-
+        return students ;
 
     }
 
@@ -106,6 +105,7 @@ public class Crud {
         System.out.println(" Finished ");
 
     }
+
 
     public static void main(String[] args) {
         System.out.println("Start");

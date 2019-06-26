@@ -2,36 +2,22 @@
         "-//Hibernate/Hibernate Mapping DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-<class name = "hiber.test1.hiber.Student" table = "STUDENT">
-    <meta attribute = "class-description">
-        This class contains the Courses detail.
-    </meta>
+    <class name="hiber.test1.hiber.Student" table="STUDENT">
+        <meta attribute="class-description">
+            This class contains the Students detail.
+        </meta>
+        <id name="sid" type="java.lang.Integer" column="sid">
+            <generator class="identity"/>
+        </id>
+        <property name="name" column="name" type="string"/>
+        <property name="year" column="year" type="int"/>
+        <set name="CourseSet" table="COURSE_STUDENT_REL" cascade="save-update">
+            <key column="sid"/>
+            <many-to-many column="cid" class="hiber.test1.hiber.Course"/>
+        </set>
 
-    <id name = "sid" type = "int" column = "sid" >
-<!--        <generator class=""/>-->
-    </id>
-
-
-    <property name = "name" column = "name" type = "string"/>
-    <property name = "year" column = "year" type = "int"/>
-
-<!--    <set name="courseSet" table="COURSE_STUDENT_REL"-->
-<!--         inverse="false" lazy="true" fetch="select" cascade="all" >-->
-<!--        <key>-->
-<!--            <column name="sid" not-null="true" />-->
-<!--        </key>-->
-<!--        <many-to-many entity-name="hiber.test1.hiber.Course">-->
-<!--            <column name="cid" not-null="true" />-->
-<!--        </many-to-many>-->
-<!--    </set>-->
-    <set name="CourseSet" table="COURSE_STUDENT_REL"  cascade="save-update">
-        <key column="sid"/>
-        <many-to-many column="cid" class="hiber.test1.hiber.Course" />
-    </set>
-
-    <many-to-one name="department" class="hiber.test1.hiber.Department" fetch="select">
-        <column name="did" not-null="true" />
-    </many-to-one>
-</class>
+        <many-to-one name="department" class="hiber.test1.hiber.Department" fetch="select">
+            <column name="did" not-null="true"/>
+        </many-to-one>
+    </class>
 </hibernate-mapping>
-

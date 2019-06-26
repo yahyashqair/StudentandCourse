@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Course {
-    private  int cid ;
+    private  Integer cid ;
     private String name ;
     private Set<Student> studentSet =  new HashSet<Student>();
 
