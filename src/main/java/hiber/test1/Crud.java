@@ -15,36 +15,15 @@ import java.util.Set;
 
 import java.util.List;
 import java.util.Iterator;
+import org.hibernate.SQLQuery;
+import org.hibernate.Criteria;
 
 public class Crud {
-//
-//    static void readData(){
-//
-//        SessionFactory factory;
-//        try {
-//            factory = new Configuration().configure().buildSessionFactory();
-//        } catch (Throwable ex) {
-//            System.out.println("Failed to create sessionFactory object." + ex);
-//            throw new ExceptionInInitializerError(ex);
-//        }
-//
-//        Session session = factory.openSession();
-//        Transaction tr = session.beginTransaction();
-//        List<Student> students = session.createSQLQuery("select * from STUDENT").getResultList();
-//        for (Iterator iterator = students.iterator(); iterator.hasNext();){
-//           Student student= (Student) iterator.next();
-//            System.out.println(student.toString());
-//        }
-//        tr.commit();
-//
-//
-//
-//    }
-//
 
     public static void main(String[] args) {
       //  readData();
         // add student
+    static void readData(){
         SessionFactory factory;
         try {
             factory = new Configuration().configure().buildSessionFactory();
@@ -56,6 +35,30 @@ public class Crud {
         Session session = factory.openSession();
         Transaction tr = session.beginTransaction();
 
+        SQLQuery query= session.createSQLQuery("select * from STUDENT");
+        query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+
+        List<Student> students=query.list();
+
+        System.out.println(students);
+
+        tr.commit();
+
+
+
+    }
+    static void insertData(){
+
+        SessionFactory factory;
+        try {
+            factory = new Configuration().configure().buildSessionFactory();
+        } catch (Throwable ex) {
+            System.out.println("Failed to create sessionFactory object." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+
+        Session session = factory.openSession();
+        Transaction tr = session.beginTransaction();
         Student s1 = new Student();
         Department department = new Department();
 
@@ -93,13 +96,24 @@ public class Crud {
         c2.setStudentSet(studentSet);
         // end Courses
         department.setStudentSet(studentSet);
-        System.out.println(s1);
-        session.saveOrUpdate(s1);
-        session.saveOrUpdate(department);
-        session.saveOrUpdate(s2);
-        session.saveOrUpdate(c1);
-        session.saveOrUpdate(c2);
+
+        System.out.println(s1);        // Error For Save
+        session.save(department);
+        session.save(s1);
+        session.save(s2);
+        session.save(c1);
+        session.save(c2);
+        tr.commit();
+        session.close();
         System.out.println(" Finished ");
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Start");
+        readData();
+        // add student
+       // insertData();
     }
 
 }
