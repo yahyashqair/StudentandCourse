@@ -38,7 +38,7 @@ public class Crud {
 
         List<Student> students = query.list();
 
-        System.out.println(students);
+        System.out.println("Done");
 
         tr.commit();
 
@@ -54,32 +54,31 @@ public class Crud {
             System.out.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);
         }
-
         Session session = factory.openSession();
         Transaction tr = session.beginTransaction();
         Student s1 = new Student();
         Department department = new Department();
 
-        department.setName("ENG");
-        department.setId(2);
-        s1.setName("Yahya Shqair");
+        department.setName("COMPENG");
+        //department.setId(2);
+        s1.setName("BL BL");
         s1.setYear(4);
         s1.setDepartment(department);
-        s1.setSid((int) (Math.random() * 500000));
+        //s1.setSid((int) (Math.random() * 500000));
         Student s2 = new Student();
-        s2.setName("ahmaaad ");
+        s2.setName("KL KL ");
         s2.setYear(1);
         s2.setDepartment(department);
-        s2.setSid((int) (Math.random() * 500000));
+        //s2.setSid((int) (Math.random() * 500000));
         //
         // Courses
         Course c1 = new Course();
-        c1.setName("COMP322");
-        c1.setCid((int) (Math.random() * 500000));
+        c1.setName("COMP311");
+        //c1.setCid((int) (Math.random() * 500000));
 
         Course c2 = new Course();
-        c2.setName("COMP322");
-        c2.setCid((int) (Math.random() * 500000));
+        c2.setName("COMP344");
+        //c2.setCid((int) (Math.random() * 500000));
 
         Set<Course> courseSet = new HashSet<Course>();
         courseSet.add(c1);
@@ -95,7 +94,6 @@ public class Crud {
         // end Courses
         department.setStudentSet(studentSet);
 
-        System.out.println(s1);        // Error For Save
         session.save(department);
         session.save(s1);
         session.save(s2);
@@ -109,9 +107,9 @@ public class Crud {
 
     public static void main(String[] args) {
         System.out.println("Start");
-        readData();
+        //readData();
         // add student
-        // insertData();
+         insertData();
     }
 
 }

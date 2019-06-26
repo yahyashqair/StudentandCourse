@@ -7,7 +7,8 @@
         <meta attribute = "class-description">
             This class contains the Courses detail.
         </meta>
-        <id name = "cid" type = "int" column = "cid">
+        <id name = "cid" type = "java.lang.Integer" column = "cid">
+            <generator class="identity"/>
         </id>
         <property name = "name" column = "name" type = "string"/>
         <set name="studentSet" table="COURSE_STUDENT_REL" inverse="true" cascade="save-update">

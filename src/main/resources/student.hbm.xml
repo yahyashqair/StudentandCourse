@@ -7,8 +7,8 @@
         This class contains the Courses detail.
     </meta>
 
-    <id name = "sid" type = "int" column = "sid" >
-<!--        <generator class=""/>-->
+    <id name = "sid" type = "java.lang.Integer" column = "sid" >
+        <generator class="identity"/>
     </id>
 
 
