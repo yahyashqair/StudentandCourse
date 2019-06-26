@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Department {
-    private int id ;
+    private Integer id ;
     private String name ;
     private Set<Student> studentSet = new HashSet<Student>();
 

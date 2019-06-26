@@ -61,25 +61,25 @@ public class Crud {
         Department department = new Department();
 
         department.setName("ENG");
-        department.setId(2);
+        //department.setId(2);
         s1.setName("Yahya Shqair");
         s1.setYear(4);
         s1.setDepartment(department);
-        s1.setSid((int) (Math.random() * 500000));
+        //s1.setSid((int) (Math.random() * 500000));
         Student s2 = new Student();
         s2.setName("ahmaaad ");
         s2.setYear(1);
         s2.setDepartment(department);
-        s2.setSid((int) (Math.random() * 500000));
+        //s2.setSid((int) (Math.random() * 500000));
         //
         // Courses
         Course c1 = new Course();
         c1.setName("COMP322");
-        c1.setCid((int) (Math.random() * 500000));
+        //c1.setCid((int) (Math.random() * 500000));
 
         Course c2 = new Course();
         c2.setName("COMP322");
-        c2.setCid((int) (Math.random() * 500000));
+        //c2.setCid((int) (Math.random() * 500000));
 
         Set<Course> courseSet = new HashSet<Course>();
         courseSet.add(c1);
@@ -109,9 +109,9 @@ public class Crud {
 
     public static void main(String[] args) {
         System.out.println("Start");
-        readData();
+        //readData();
         // add student
-        // insertData();
+         insertData();
     }
 
 }
