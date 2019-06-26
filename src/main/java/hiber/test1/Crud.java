@@ -20,10 +20,8 @@ import org.hibernate.Criteria;
 
 public class Crud {
 
-    public static void main(String[] args) {
-      //  readData();
-        // add student
-    static void readData(){
+
+    static void readData() {
         SessionFactory factory;
         try {
             factory = new Configuration().configure().buildSessionFactory();
@@ -35,19 +33,19 @@ public class Crud {
         Session session = factory.openSession();
         Transaction tr = session.beginTransaction();
 
-        SQLQuery query= session.createSQLQuery("select * from STUDENT");
+        SQLQuery query = session.createSQLQuery("select * from STUDENT");
         query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
 
-        List<Student> students=query.list();
+        List<Student> students = query.list();
 
         System.out.println(students);
 
         tr.commit();
 
 
-
     }
-    static void insertData(){
+
+    static void insertData() {
 
         SessionFactory factory;
         try {
@@ -67,21 +65,21 @@ public class Crud {
         s1.setName("Yahya Shqair");
         s1.setYear(4);
         s1.setDepartment(department);
-        s1.setSid((int)(Math.random()*500000));
+        s1.setSid((int) (Math.random() * 500000));
         Student s2 = new Student();
         s2.setName("ahmaaad ");
         s2.setYear(1);
         s2.setDepartment(department);
-        s2.setSid((int)(Math.random()*500000));
+        s2.setSid((int) (Math.random() * 500000));
         //
         // Courses
         Course c1 = new Course();
         c1.setName("COMP322");
-        c1.setCid((int)(Math.random()*500000));
+        c1.setCid((int) (Math.random() * 500000));
 
         Course c2 = new Course();
         c2.setName("COMP322");
-        c2.setCid((int)(Math.random()*500000));
+        c2.setCid((int) (Math.random() * 500000));
 
         Set<Course> courseSet = new HashSet<Course>();
         courseSet.add(c1);
@@ -113,7 +111,7 @@ public class Crud {
         System.out.println("Start");
         readData();
         // add student
-       // insertData();
+        // insertData();
     }
 
 }
