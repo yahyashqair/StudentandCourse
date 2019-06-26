@@ -15,15 +15,6 @@
     <property name = "name" column = "name" type = "string"/>
     <property name = "year" column = "year" type = "int"/>
 
-<!--    <set name="courseSet" table="COURSE_STUDENT_REL"-->
-<!--         inverse="false" lazy="true" fetch="select" cascade="all" >-->
-<!--        <key>-->
-<!--            <column name="sid" not-null="true" />-->
-<!--        </key>-->
-<!--        <many-to-many entity-name="hiber.test1.hiber.Course">-->
-<!--            <column name="cid" not-null="true" />-->
-<!--        </many-to-many>-->
-<!--    </set>-->
     <set name="CourseSet" table="COURSE_STUDENT_REL"  cascade="save-update">
         <key column="sid"/>
         <many-to-many column="cid" class="hiber.test1.hiber.Course" />

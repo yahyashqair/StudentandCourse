@@ -55,6 +55,9 @@ public class Crud {
     static void insertData() {
 
 
+        Session session = makesesstions();
+        Transaction tr = session.beginTransaction();
+
         Student s1 = new Student();
         Department department = new Department();
 
@@ -107,13 +110,14 @@ public class Crud {
     /*
     *   Create Strudent
     *  */
-    static Student CreatStudent(String Name,int did ){
+    static Student CreatStudent(String Name,int did ,int year){
         Student student = new Student();
         Session session = makesesstions();
         Transaction tr = session.beginTransaction();
         Department department = session.get(Department.class,did);
         student.setDepartment(department);
         student.setName(Name);
+        student.setYear(year);
         session.save(student);
         tr.commit();
         return student;
@@ -144,9 +148,10 @@ public class Crud {
 
     public static void main(String[] args) {
         System.out.println("Start");
-        //readData();
-        // add student
-         insertData();
+
+        // UpdateStudent(443234,"Updated"); // Tested
+        // RemoveStudent(443235); // Tested
+        CreatStudent("Created",3,4); // Tested
     }
 
 }
