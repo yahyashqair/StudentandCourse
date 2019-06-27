@@ -10,8 +10,6 @@
     <id name = "sid" type = "java.lang.Integer" column = "sid" >
         <generator class="identity"/>
     </id>
-
-
     <property name = "name" column = "name" type = "string"/>
     <property name = "year" column = "year" type = "int"/>
 
@@ -19,7 +17,6 @@
         <key column="sid"/>
         <many-to-many column="cid" class="hiber.test1.hiber.Course" />
     </set>
-
     <many-to-one name="department" class="hiber.test1.hiber.Department" fetch="select">
         <column name="did" not-null="true" />
     </many-to-one>

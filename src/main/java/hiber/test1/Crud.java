@@ -9,12 +9,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import java.util.List;
-import java.util.Iterator;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Criteria;
 
@@ -35,20 +33,14 @@ public class Crud {
 
     // For Testing ..
     static void readData() {
-
         Session session = makesesstions();
         Transaction tr = session.beginTransaction();
-
-        SQLQuery query = session.createSQLQuery("select * from STUDENT");
-        query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-
-        List<Student> students = query.list();
-
-        System.out.println("Done");
-
+         Student student=session.get(Student.class,443233);
+         student.getDepartment().getId();
+        System.out.println( student.getDepartment().getId());
+         System.out.println(student.getName());
         tr.commit();
-
-
+        session.close();
     }
 
     // For Testing ..
@@ -120,6 +112,8 @@ public class Crud {
         student.setYear(year);
         session.save(student);
         tr.commit();
+
+        session.close();
         return student;
     }
 
@@ -133,6 +127,7 @@ public class Crud {
         Student student=session.find(Student.class,id);
         session.remove(student);
         tr.commit();
+        session.close();
     }
     /*
      *   update Student
@@ -144,6 +139,8 @@ public class Crud {
         student.setName(name);
         session.update(student);
         tr.commit();
+
+        session.close();
     }
 
     public static void main(String[] args) {
@@ -151,7 +148,8 @@ public class Crud {
 
         // UpdateStudent(443234,"Updated"); // Tested
         // RemoveStudent(443235); // Tested
-        CreatStudent("Created",3,4); // Tested
+        //CreatStudent("new",2,6); // Tested
+        readData();
     }
 
 }

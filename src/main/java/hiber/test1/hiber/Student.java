@@ -9,7 +9,6 @@ public  class Student {
 
 
     private Integer sid;
-
     private Department department;
     private String name;
     private int year;
@@ -42,16 +41,16 @@ public  class Student {
         this.year = year;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "sid=" + sid +
-                ", department=" + department +
-                ", name='" + name + '\'' +
-                ", year=" + year +
-                ", courseSet=" + courseSet +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Student{" +
+//                "sid=" + sid +
+//                ", department=" + department +
+//                ", name='" + name + '\'' +
+//                ", year=" + year +
+//                ", courseSet=" + courseSet +
+//                '}';
+//    }
 
     public String getName() {
         return name;
