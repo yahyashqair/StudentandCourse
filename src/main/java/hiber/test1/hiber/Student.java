@@ -79,4 +79,14 @@ public  class Student {
     }
 //
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "sid=" + sid +
+                ", department=sof" +
+                ", name='" + name + '\'' +
+                ", year=" + year +
+                ", courseSet#=" + courseSet.size() +
+                '}';
+    }
 }

@@ -20,7 +20,6 @@
       </property>
       
       <property name = "hibernate.connection.password">
-         mysql
       </property>
 <!--      Copyed from tutorial-->
 <!--      <property name="show_sql">true</property>-->

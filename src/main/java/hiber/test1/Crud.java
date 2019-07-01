@@ -18,7 +18,7 @@ import org.hibernate.Criteria;
 
 public class Crud {
 
-    static Session makesesstions(){
+     Session makesesstions(){
 
         SessionFactory factory;
         try {
@@ -32,19 +32,17 @@ public class Crud {
     }
 
     // For Testing ..
-    static void readData() {
+     void readData() {
         Session session = makesesstions();
         Transaction tr = session.beginTransaction();
-         Student student=session.get(Student.class,443233);
-         student.getDepartment().getId();
-        System.out.println( student.getDepartment().getId());
-         System.out.println(student.getName());
+        List<Student> list = session.createCriteria(Student.class).list();
+         System.out.println(list);
         tr.commit();
         session.close();
     }
 
     // For Testing ..
-    static void insertData() {
+     void insertData() {
 
 
         Session session = makesesstions();
@@ -102,7 +100,7 @@ public class Crud {
     /*
     *   Create Strudent
     *  */
-    static Student CreatStudent(String Name,int did ,int year){
+     Student CreatStudent(String Name,int did ,int year){
         Student student = new Student();
         Session session = makesesstions();
         Transaction tr = session.beginTransaction();
@@ -121,7 +119,7 @@ public class Crud {
     /*
      *   Remove Student
      *  */
-    static void RemoveStudent(int id ){
+     void RemoveStudent(int id ){
         Session session = makesesstions();
         Transaction tr = session.beginTransaction();
         Student student=session.find(Student.class,id);
@@ -132,7 +130,7 @@ public class Crud {
     /*
      *   update Student
      *  */
-    static void UpdateStudent(int id ,String name){
+     void UpdateStudent(int id ,String name){
         Session session = makesesstions();
         Transaction tr = session.beginTransaction();
         Student student=session.find(Student.class,id);
@@ -143,13 +141,14 @@ public class Crud {
         session.close();
     }
 
-    public static void main(String[] args) {
-        System.out.println("Start");
-
-        // UpdateStudent(443234,"Updated"); // Tested
-        // RemoveStudent(443235); // Tested
-        //CreatStudent("new",2,6); // Tested
-        readData();
-    }
+//
+//    public static void main(String[] args) {
+//        System.out.println("Start");
+//
+//        // UpdateStudent(443234,"Updated"); // Tested
+//        // RemoveStudent(443235); // Tested
+//        //CreatStudent("new",2,6); // Tested
+//        readData();
+//    }
 
 }

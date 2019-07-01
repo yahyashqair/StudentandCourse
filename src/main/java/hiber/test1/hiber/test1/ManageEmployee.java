@@ -1,4 +1,4 @@
-package hiber.test1;
+package hiber.test1.hiber.test1;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
