@@ -1,4 +1,4 @@
-package hiber.test1;
+package hiber.test1.hiber.DAO;
 
 import hiber.test1.hiber.Course;
 import hiber.test1.hiber.Department;
@@ -15,13 +15,16 @@ import java.util.List;
 
 import org.hibernate.SQLQuery;
 import org.hibernate.Criteria;
+import org.springframework.stereotype.Component;
 
-public class Crud {
+@Component
+public class CrudStudent {
 
      Session makesesstions(){
 
         SessionFactory factory;
         try {
+
             factory = new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
             System.out.println("Failed to create sessionFactory object." + ex);
@@ -32,7 +35,7 @@ public class Crud {
     }
 
     // For Testing ..
-     void readData() {
+      public void readData() {
         Session session = makesesstions();
         Transaction tr = session.beginTransaction();
         List<Student> list = session.createCriteria(Student.class).list();
@@ -100,7 +103,7 @@ public class Crud {
     /*
     *   Create Strudent
     *  */
-     Student CreatStudent(String Name,int did ,int year){
+     Student creatStudent(String Name,int did ,int year){
         Student student = new Student();
         Session session = makesesstions();
         Transaction tr = session.beginTransaction();
@@ -110,7 +113,6 @@ public class Crud {
         student.setYear(year);
         session.save(student);
         tr.commit();
-
         session.close();
         return student;
     }
@@ -119,7 +121,7 @@ public class Crud {
     /*
      *   Remove Student
      *  */
-     void RemoveStudent(int id ){
+     void removeStudent(int id ){
         Session session = makesesstions();
         Transaction tr = session.beginTransaction();
         Student student=session.find(Student.class,id);
@@ -130,25 +132,14 @@ public class Crud {
     /*
      *   update Student
      *  */
-     void UpdateStudent(int id ,String name){
+     void updateStudent(int id ,String name){
         Session session = makesesstions();
         Transaction tr = session.beginTransaction();
         Student student=session.find(Student.class,id);
         student.setName(name);
         session.update(student);
         tr.commit();
-
         session.close();
     }
-
-//
-//    public static void main(String[] args) {
-//        System.out.println("Start");
-//
-//        // UpdateStudent(443234,"Updated"); // Tested
-//        // RemoveStudent(443235); // Tested
-//        //CreatStudent("new",2,6); // Tested
-//        readData();
-//    }
 
 }
